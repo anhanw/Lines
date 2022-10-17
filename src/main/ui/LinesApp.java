@@ -246,7 +246,7 @@ public class LinesApp {
         if (bl.getBookList().size() > 0) {
             System.out.println(bl.booksToString());
         } else {
-            System.out.println("No books for now.");
+            System.out.println("\nNo books for now.");
         }
     }
 
