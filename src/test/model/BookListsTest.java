@@ -70,12 +70,33 @@ public class BookListsTest {
     }
 
     @Test
-    void testGetBook() {
+    void testGetBookSpecial() {
         tLists.addBooks(bl1);
         tLists.addBooks(bl2);
         tLists.addBooks(bl2);
         assertEquals(bl1, tLists.getBooks("Pure"));
         assertEquals(bl2, tLists.getBooks("Love is Love"));
         assertEquals(null, tLists.getBooks("null"));
+    }
+
+    @Test
+    void testGetBookFinished() {
+        tLists.addBooks(bl1);
+        tLists.addBooks(bl2);
+        assertEquals(tLists.getFinishedBooks(), tLists.getBooks("Done"));
+    }
+
+    @Test
+    void testGetBookToRead() {
+        tLists.addBooks(bl1);
+        tLists.addBooks(bl2);
+        assertEquals(tLists.getToRead(), tLists.getBooks("Plan"));
+    }
+
+    @Test
+    void testGetBookRecom() {
+        tLists.addBooks(bl1);
+        tLists.addBooks(bl2);
+        assertEquals(tLists.getRecommendBooks(), tLists.getBooks("LookAhead"));
     }
 }
