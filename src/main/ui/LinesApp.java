@@ -108,7 +108,7 @@ public class LinesApp {
     private void renameExcerpts() {
         System.out.println("What's the new name of your excerpts?");
         input = new Scanner(System.in);
-        String newName = input.next();
+        String newName = input.nextLine();
         sentPack.renameExcerpts(newName);
     }
 
@@ -117,10 +117,10 @@ public class LinesApp {
     private void addExcerpts() {
         System.out.println("Where is your excerpt from?");
         input = new Scanner(System.in);
-        String from = input.next();
+        String from = input.nextLine();
         System.out.println("What is the content?");
         input = new Scanner(System.in);
-        String content = input.next();
+        String content = input.nextLine();
         sentPack.addExcerpt(new Excerpt(from, content));
     }
 
@@ -215,7 +215,7 @@ public class LinesApp {
     private void addNewBookList() {
         System.out.println("What's the name of your new list?");
         input = new Scanner(System.in);
-        String newName = input.next();
+        String newName = input.nextLine();
         bookPack.addBooks(new BookList(newName));
     }
 
@@ -283,7 +283,7 @@ public class LinesApp {
     public void addBook(BookList bl) {
         System.out.println("What's the name of your new book?");
         input = new Scanner(System.in);
-        String newName = input.next();
+        String newName = input.nextLine();
         bl.addBook(new Book(newName));
     }
 
@@ -300,7 +300,7 @@ public class LinesApp {
     public void checkBook(BookList bl) {
         System.out.println("What's the name of the book you want to check?");
         input = new Scanner(System.in);
-        String given = input.next();
+        String given = input.nextLine();
         boolean t = bl.getBookNames().contains(given);
         if (t == true) {
             System.out.println("The book <<" + given + ">> is in this list.");
@@ -391,19 +391,19 @@ public class LinesApp {
     public void renameBook(Book b) {
         System.out.println("What's the new name of your book?");
         input = new Scanner(System.in);
-        String newName = input.next();
+        String newName = input.nextLine();
         b.rename(newName);
     }
 
     // MODIFIES: this
     // EFFECTS: add the note with user's given page
     public void addNote(Book b) {
-        System.out.println("Which page does the note refer to?");
+        System.out.println("Which page does the note refer to (Enter integer)?");
         input = new Scanner(System.in);
         int page = input.nextInt();
         System.out.println("What is the content of the note?");
         input = new Scanner(System.in);
-        String content = input.next();
+        String content = input.nextLine();
         b.getNotes().addNote(new Note(page, content));
     }
 
