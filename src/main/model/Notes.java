@@ -27,8 +27,10 @@ public class Notes {
     // EFFECTS: change notes in form of string
     public String notesToString() {
         String note = "Notes:";
+        int i = 0;
         for (Note n : notes) {
-            note = note + "\n" + n.getContent() + " (P" + n.getPage() + ").";
+            note = note + "\n\t(" + i + ") " + n.getContent() + " (P" + n.getPage() + ").";
+            i++;
         }
         if (note != "Notes:") {
             return note;

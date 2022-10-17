@@ -21,6 +21,7 @@ public class Book {
     // EFFECTS: rename the book
     public void rename(String name) {
         this.bookName = name;
+        this.currentPage = 0;
     }
 
     // REQUIRE: page >= 0
@@ -28,6 +29,7 @@ public class Book {
     // EFFECTS: set up the last page
     public void setLastPage(int page) {
         lastPage = page;
+        percentage = Math.round(((double)currentPage / (double)lastPage) * 100);
     }
 
     // REQUIRE: page >= 0 and page <= last page
@@ -36,6 +38,13 @@ public class Book {
     public void setCurrentStage(int page) {
         currentPage = page;
         percentage = Math.round(((double)currentPage / (double)lastPage) * 100);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: set up the current stage of reading to 100
+    public void doneBook() {
+        this.currentPage = lastPage;
+        percentage = 100;
     }
 
     // EFFECTS: get name of book

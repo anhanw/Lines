@@ -5,11 +5,19 @@ import java.util.List;
 
 // Represent a collection of excerpts.
 public class Excerpts {
+    private String name;
     private List<Excerpt> excerpts;
 
     // EFFECTS: instantiate excerpts a new list
-    public Excerpts() {
+    public Excerpts(String name) {
+        this.name = name;
         excerpts = new ArrayList<Excerpt>();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Change the name of bookList
+    public void renameExcerpts(String name) {
+        this.name = name;
     }
 
     // MODIFIES: this
@@ -18,27 +26,26 @@ public class Excerpts {
         excerpts.add(line);
     }
 
-    // MODIFIES: this
-    // EFFECTS: remove a new excerpt to excerpts collection
-    public void removeExcerpt(Excerpt line) {
-        excerpts.remove(line);
-    }
-
     // EFFECTS: Change the excerpts to String
     public String excerptsToString() {
-        String excerpt = "Excerpts:";
+        String excerpt = name + ":";
         for (Excerpt e : excerpts) {
             excerpt = excerpt + "\nFrom: " + e.getFrom() + "\n\t" + e.getContent();
         }
-        if (excerpt != "Excerpts:") {
+        if (excerpts.size() != 0) {
             return excerpt;
         } else {
-            return "No excerpts for now!";
+            return (name + ":\nNo excerpts for now!");
         }
     }
 
     // EFFECTS: get excerpts
+    public String getExcerptsName() {
+        return name;
+    }
+
+    // EFFECTS: get excerpts
     public List<Excerpt> getExcerpts() {
-        return  excerpts;
+        return excerpts;
     }
 }

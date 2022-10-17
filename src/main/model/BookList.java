@@ -31,15 +31,24 @@ public class BookList {
         return bookList.contains(b);
     }
 
-    // REQUIRE: Book with given name exists in bookList
-    // EFFECTS: get the book in bookList
-    public Book getBook(String name) {
-        for (Book b: bookList) {
-            if (name == b.getBookName()) {
-                return b;
-            }
+    // EFFECTS: view booklist in form of String
+    public String booksToString() {
+        String result = ("\n" + name + ":");;
+        int i = 0;
+        for (Book b:bookList) {
+            result = result + "\n\t" + "(" + i + ")" + b.getBookName();
+            i++;
         }
-        return null;
+        return result;
+    }
+
+    //EFFECTS: get the list of book names in this list
+    public List<String> getBookNames() {
+        List<String> bookNames = new ArrayList<String>();
+        for (Book b: bookList) {
+            bookNames.add(b.getBookName());
+        }
+        return bookNames;
     }
 
     // EFFECTS: get the name of the list

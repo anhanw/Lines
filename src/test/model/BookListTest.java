@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -72,12 +75,20 @@ public class BookListTest {
     }
 
     @Test
-    void testGetBook() {
+    void testBooksToString() {
         tList.addBook(b1);
         tList.addBook(b2);
-        tList.addBook(b2);
-        assertEquals(b1, tList.getBook("QunShangHuiXiang"));
-        assertEquals(b2, tList.getBook("JiaYou!!!"));
-        assertEquals(null, tList.getBook("null"));
+        String s = tList.booksToString();
+        assertEquals("\ntest:\n\t(0)QunShangHuiXiang\n\t(1)JiaYou!!!", s);
+    }
+
+    @Test
+    void testGetBookNames() {
+        tList.addBook(b1);
+        tList.addBook(b1);
+        List<String> bn = new ArrayList<>();
+        bn.add("QunShangHuiXiang");
+        bn.add("QunShangHuiXiang");
+        assertEquals(bn, tList.getBookNames());
     }
 }

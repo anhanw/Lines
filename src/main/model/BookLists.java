@@ -19,20 +19,6 @@ public class BookLists {
     }
 
     // MODIFIES: this
-    // EFFECTS: Move a book from toRead to finishedBooks or just add the book to finishedBooks
-    public void doneABook(Book b) {
-        toRead.removeBook(b);
-        finishedBooks.addBook(b);
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Move a book from recommendBooks to toRead or just add the book to toRead
-    public void planABook(Book b) {
-        recommendBooks.removeBook(b);
-        toRead.addBook(b);
-    }
-
-    // MODIFIES: this
     // EFFECTS: Add a bookList to specialLists
     public void addBooks(BookList bl) {
         specialLists.add(bl);
@@ -87,13 +73,4 @@ public class BookLists {
     public List<BookList> getSpecialLists() {
         return specialLists;
     }
-
-
-    // REQUIRE:
-    // MODIFIES:
-    // EFFECTS:
-
-    // REQUIRE:
-    // MODIFIES:
-    // EFFECTS:
 }

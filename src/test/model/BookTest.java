@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static jdk.nashorn.internal.objects.NativeSet.size;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BookTest {
     private Book tBook;
@@ -18,6 +19,7 @@ class BookTest {
     void testConstructor() {
         assertEquals("testBook", tBook.getBookName());
         assertEquals(0, tBook.getNotes().size());
+        assertEquals(0, tBook.getCurrentPage());
     }
 
     @Test
@@ -30,6 +32,7 @@ class BookTest {
     void testSetLastPage() {
         tBook.setLastPage(20);
         assertEquals(20, tBook.getLastPage());
+        assertEquals(0, tBook.getPercentage());
     }
 
     @Test
@@ -38,6 +41,13 @@ class BookTest {
         tBook.setCurrentStage(210);
         assertEquals(210, tBook.getCurrentPage());
         assertEquals((double)54.0, tBook.getPercentage());
+    }
+
+    @Test
+    void testDoneBook() {
+        tBook.doneBook();
+        assertTrue(tBook.getCurrentPage() == tBook.getLastPage());
+        assertEquals((double)100, tBook.getPercentage());
     }
 
 }

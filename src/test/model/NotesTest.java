@@ -74,7 +74,7 @@ public class NotesTest {
     @Test
     void testOneNotesToString() {
         tNotes.addNote(n1);
-        String s = "Notes:\nThat's too much! (P32).";
+        String s = "Notes:\n\t(0) That's too much! (P32).";
         assertEquals(s, tNotes.notesToString());
     }
 
@@ -82,7 +82,7 @@ public class NotesTest {
     void testSameNotesToString() {
         tNotes.addNote(n1);
         tNotes.addNote(n1);
-        String s = "Notes:\nThat's too much! (P32).\nThat's too much! (P32).";
+        String s = "Notes:\n\t(0) That's too much! (P32).\n\t(1) That's too much! (P32).";
         assertEquals(s, tNotes.notesToString());
     }
 
@@ -90,7 +90,7 @@ public class NotesTest {
     void testManyNotesToString() {
         tNotes.addNote(n1);
         tNotes.addNote(n2);
-        String s = "Notes:\nThat's too much! (P32).\nThat's too too much! (P45).";
+        String s = "Notes:\n\t(0) That's too much! (P32).\n\t(1) That's too too much! (P45).";
         assertEquals(s, tNotes.notesToString());
     }
 }
