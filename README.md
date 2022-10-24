@@ -48,3 +48,7 @@ such as: pages and percentage.
 - As a user, I want to be able to finish a book.
 - As a user, I want to be able to rename my excerpts' collection.
 - As a user, I want to be able to add a excerpt(s) and view my excerpts' collection.
+- As a user, I want to be able to choose to save my book lists and excerpts when I select 
+the quit option from the application menu. 
+- As a user, I want to be able to choose to load my book lists and excerpts when I start 
+*Lines*.
