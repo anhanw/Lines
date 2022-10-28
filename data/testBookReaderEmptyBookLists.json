@@ -1,0 +1,15 @@
+{
+    "special": [],
+    "toRead": {
+        "books": [],
+        "blName": "t"
+    },
+    "finish": {
+        "books": [],
+        "blName": "f"
+    },
+    "recom": {
+        "books": [],
+        "blName": "r"
+    }
+}
