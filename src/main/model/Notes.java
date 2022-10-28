@@ -1,5 +1,9 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,5 +51,16 @@ public class Notes {
     // EFFECTS: get size of notes
     public int size() {
         return notes.size();
+    }
+
+    // EFFECTS: returns things in the notes as a JSON array
+    public JSONArray toJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Note t : notes) {
+            jsonArray.put(t.toJson());
+        }
+
+        return jsonArray;
     }
 }

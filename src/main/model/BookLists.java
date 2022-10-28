@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represent a collection of booklists with finished books, to read books and recommend books
-public class BookLists {
+public class BookLists implements Writable {
     private List<BookList> specialLists;
     private BookList finishedBooks;
     private BookList toRead;
@@ -72,5 +76,26 @@ public class BookLists {
     // EFFECTS: get the specialLists
     public List<BookList> getSpecialLists() {
         return specialLists;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("finish", finishedBooks.toJson());
+        json.put("toRead", toRead.toJson());
+        json.put("recom", recommendBooks.toJson());
+        json.put("special", specialToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this specialLists as a JSON array
+    private JSONArray specialToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (BookList bl : specialLists) {
+            jsonArray.put(bl.toJson());
+        }
+
+        return jsonArray;
     }
 }

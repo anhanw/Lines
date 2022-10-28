@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represent a note within a page number
-public class Note {
+public class Note implements Writable {
     private int page;
     private String content;
 
@@ -19,5 +22,13 @@ public class Note {
     // EFFECTS: get the note content
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("page", page);
+        json.put("content", content);
+        return json;
     }
 }

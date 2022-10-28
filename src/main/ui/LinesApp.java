@@ -1,16 +1,35 @@
 package ui;
 
 import model.*;
+import persistence.JsonReaderBook;
+import persistence.JsonReaderExcerpt;
+import persistence.JsonWriterBook;
+import persistence.JsonWriterExcerpt;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
+// Represents the Lines application
 public class LinesApp {
+    private static final String JSON_STORE_Book = "./data/bookPack.json";
+    private static final String JSON_STORE_Sent = "./data/sentPack.json";
     private BookLists bookPack;
     private Excerpts sentPack;
     private Scanner input;
+    private JsonWriterBook jsonWriterBook;
+    private JsonReaderBook jsonReaderBook;
+    private JsonReaderExcerpt jsonReaderExcerpt;
+    private JsonWriterExcerpt jsonWriterExcerpt;
 
     // EFFECTS: run the Lines application
-    public LinesApp() {
+    public LinesApp() throws FileNotFoundException {
+        jsonReaderBook = new JsonReaderBook(JSON_STORE_Book);
+        jsonWriterBook = new JsonWriterBook(JSON_STORE_Book);
+        jsonReaderExcerpt = new JsonReaderExcerpt(JSON_STORE_Sent);
+        jsonWriterExcerpt = new JsonWriterExcerpt(JSON_STORE_Sent);
+
+        setUp();
         runLines();
     }
 
@@ -19,8 +38,6 @@ public class LinesApp {
     public void runLines() {
         boolean keepGoing = true;
         String command = null;
-
-        init();
 
         System.out.println("\nWelcome to Lines!");
 
@@ -31,6 +48,7 @@ public class LinesApp {
 
             if (command.equals("q")) {
                 keepGoing = false;
+                checkOut();
             } else {
                 accessGate(command);
             }
@@ -38,6 +56,85 @@ public class LinesApp {
 
         System.out.println("\nThank you for using!");
         System.out.println("\nGoodbye!");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: load the data from the storing source if user requires; otherwise initiate new packs
+    public void setUp() {
+        boolean valid = true;
+
+        while (valid) {
+            System.out.println("Do you want to load your data from last time?");
+            System.out.println("\t y -> yes");
+            System.out.println("\t n -> no");
+            input = new Scanner(System.in);
+            String command = input.next();
+            command = command.toLowerCase();
+
+            if (command.equals("y")) {
+                load();
+                valid = false;
+            } else if (command.equals("n")) {
+                init();
+                valid = false;
+            } else {
+                System.out.println("Selection not valid, please choose again.");
+            }
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: save the data to the storing source if user requires; otherwise quit directly
+    public void checkOut() {
+        boolean valid = true;
+
+        while (valid) {
+            System.out.println("Do you want to save your data?");
+            System.out.println("\t y -> yes");
+            System.out.println("\t n -> no");
+            input = new Scanner(System.in);
+            String command = input.next();
+            command = command.toLowerCase();
+
+            if (command.equals("y")) {
+                save();
+                valid = false;
+            } else if (command.equals("n")) {
+                valid = false;
+            } else {
+                System.out.println("Selection not valid, please choose again.");
+            }
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads bls and excerpts from file
+    private void load() {
+        try {
+            bookPack = jsonReaderBook.read();
+            sentPack = jsonReaderExcerpt.read();
+            System.out.println("Loaded BookLists from " + JSON_STORE_Book);
+            System.out.println("Loaded Excerpts from " + JSON_STORE_Sent);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE_Book + "and" + JSON_STORE_Sent + ".");
+            init();
+        }
+    }
+
+    // EFFECTS: saves the bookLists and excerpts to file
+    private void save() {
+        try {
+            jsonWriterBook.open();
+            jsonWriterBook.write(bookPack);
+            jsonWriterBook.close();
+            jsonWriterExcerpt.open();
+            jsonWriterExcerpt.write(sentPack);
+            jsonWriterExcerpt.close();
+            System.out.println("Saved BookLists to" + JSON_STORE_Book);
+            System.out.println("Saved Excerpts to " + JSON_STORE_Sent);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE_Book + "and" + JSON_STORE_Sent + ".");
+        }
     }
 
     // MODIFIES: this

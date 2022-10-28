@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represent a collection of excerpts.
-public class Excerpts {
+public class Excerpts implements Writable {
     private String name;
     private List<Excerpt> excerpts;
 
@@ -47,5 +51,24 @@ public class Excerpts {
     // EFFECTS: get excerpts
     public List<Excerpt> getExcerpts() {
         return excerpts;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("excerptsName", name);
+        json.put("excerpts", excerptsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in the excerpts as a JSON array
+    private JSONArray excerptsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Excerpt e : excerpts) {
+            jsonArray.put(e.toJson());
+        }
+
+        return jsonArray;
     }
 }

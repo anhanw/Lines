@@ -1,10 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.nio.file.Watchable;
 import java.util.ArrayList;
 import java.util.List;
 
 // Represent a booklist with its name and books contained
-public class BookList {
+public class BookList implements Writable {
     private String name;
     private List<Book> bookList;
 
@@ -59,5 +64,24 @@ public class BookList {
     // EFFECTS: get the bookList
     public List getBookList() {
         return bookList;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("blName", name);
+        json.put("books", booksToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this bookList as a JSON array
+    private JSONArray booksToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Book b : bookList) {
+            jsonArray.put(b.toJson());
+        }
+
+        return jsonArray;
     }
 }

@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.nio.file.Watchable;
 import java.util.ArrayList;
 import java.util.List;
 
 // Represent a book its name, reading process, and notes from reader
-public class Book {
+public class Book implements Writable {
     private String bookName;
     private int currentPage;
     private int lastPage;
@@ -72,4 +76,14 @@ public class Book {
         return notes;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("bName", bookName);
+        json.put("cPage", currentPage);
+        json.put("lPage", lastPage);
+        json.put("%", percentage);
+        json.put("notes", notes.toJson());
+        return json;
+    }
 }
