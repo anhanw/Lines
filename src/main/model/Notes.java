@@ -1,8 +1,6 @@
 package model;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
-import persistence.Writable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +9,7 @@ import java.util.List;
 public class Notes {
     private List<Note> notes;
 
+    // EFFECTS: create a list of note
     public Notes() {
         notes = new ArrayList<Note>();
     }

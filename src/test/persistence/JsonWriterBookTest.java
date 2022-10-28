@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Book;
+import model.BookList;
 import model.BookLists;
 import model.Note;
 import org.junit.jupiter.api.Test;
@@ -10,26 +11,33 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-// Methods were taken from JsonReaderTest in:
+// Methods were taken from JsonWriterTest in:
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
-public class JsonReaderBookTest {
+public class JsonWriterBookTest {
     @Test
-    void testReaderNonExistentFile() {
-        JsonReaderBook reader = new JsonReaderBook("./data/noSuchFile.json");
+    void testWriterInvalidFile() {
         try {
-            BookLists bls = reader.read();
-            fail("IOException expected");
+            BookLists bls = new BookLists("f", "t", "r");
+            JsonWriterBook writer = new JsonWriterBook("./data/my\0illegal:fileName.json");
+            writer.open();
+            fail("IOException was expected");
         } catch (IOException e) {
             // pass
         }
     }
 
     @Test
-    void testReaderEmptyBookLists() {
-        JsonReaderBook reader = new JsonReaderBook("./data/testBookReaderEmptyBookLists.json");
+    void testWriterEmptyBookLists() {
         try {
-            BookLists bls = reader.read();
+            BookLists bls = new BookLists("f", "t", "r");
+            JsonWriterBook writer = new JsonWriterBook("./data/testBookWriterEmptyBookLists.json");
+            writer.open();
+            writer.write(bls);
+            writer.close();
+
+            JsonReaderBook reader = new JsonReaderBook("./data/testBookWriterEmptyBookLists.json");
+            bls = reader.read();
             assertEquals("DoneBooks", bls.getFinishedBooks().getName());
             assertEquals("ToReadBooks", bls.getToRead().getName());
             assertEquals("RecommendBooks", bls.getRecommendBooks().getName());
@@ -38,21 +46,29 @@ public class JsonReaderBookTest {
             assertEquals(0, bls.getToRead().getBookList().size());
             assertEquals(0, bls.getRecommendBooks().getBookList().size());
         } catch (IOException e) {
-            fail("Couldn't read from file");
+            fail("Exception should not have been thrown");
         }
     }
 
     @Test
-    void testReaderGeneralBookLists() {
-        JsonReaderBook reader = new JsonReaderBook("./data/testBookReaderGeneralBookLists.json");
+    void testWriterGeneralBookLists() {
         try {
-            BookLists bls = reader.read();
+            BookLists bls = new BookLists("f", "t", "r");
+            bls.addBooks(new BookList("test"));
             Book b = new Book("Harry");
             b.setLastPage(100);
             b.setCurrentStage(46);
             Note n = new Note(41, "haha");
             b.getNotes().addNote(n);
+            bls.getToRead().addBook(b);
 
+            JsonWriterBook writer = new JsonWriterBook("./data/testBookWriterGeneralBookLists.json");
+            writer.open();
+            writer.write(bls);
+            writer.close();
+
+            JsonReaderBook reader = new JsonReaderBook("./data/testBookWriterGeneralBookLists.json");
+            bls = reader.read();
             assertEquals("DoneBooks", bls.getFinishedBooks().getName());
             assertEquals("ToReadBooks", bls.getToRead().getName());
             assertEquals("RecommendBooks", bls.getRecommendBooks().getName());
@@ -65,8 +81,9 @@ public class JsonReaderBookTest {
             assertEquals(41, book.getNotes().get(0).getPage());
             assertEquals("haha", book.getNotes().get(0).getContent());
             assertEquals(0, bls.getRecommendBooks().getBookList().size());
+
         } catch (IOException e) {
-            fail("Couldn't read from file");
+            fail("Exception should not have been thrown");
         }
     }
 }

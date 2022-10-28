@@ -1,10 +1,12 @@
 package persistence;
 
-import model.BookLists;
 import model.Excerpts;
 import org.json.JSONObject;
 
 import java.io.*;
+
+// Methods were taken from JsonWriter in:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
 // Represents a writer that writes JSON representation of excerpts to file
 public class JsonWriterExcerpt {

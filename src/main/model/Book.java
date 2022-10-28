@@ -3,10 +3,6 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.nio.file.Watchable;
-import java.util.ArrayList;
-import java.util.List;
-
 // Represent a book its name, reading process, and notes from reader
 public class Book implements Writable {
     private String bookName;

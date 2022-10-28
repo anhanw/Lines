@@ -29,6 +29,8 @@ public class LinesApp {
         jsonReaderExcerpt = new JsonReaderExcerpt(JSON_STORE_Sent);
         jsonWriterExcerpt = new JsonWriterExcerpt(JSON_STORE_Sent);
 
+        System.out.println("\nWelcome to Lines!");
+
         setUp();
         runLines();
     }
@@ -38,8 +40,6 @@ public class LinesApp {
     public void runLines() {
         boolean keepGoing = true;
         String command = null;
-
-        System.out.println("\nWelcome to Lines!");
 
         while (keepGoing) {
             displayMainMenu();

@@ -12,6 +12,9 @@ import model.BookLists;
 import model.Note;
 import org.json.*;
 
+// Methods were taken from JsonReader in:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 // Represents a reader that reads bookLists from JSON data stored in file
 public class JsonReaderBook {
     private String source;

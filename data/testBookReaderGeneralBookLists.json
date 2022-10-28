@@ -1,0 +1,27 @@
+{
+    "special": [{
+        "books": [],
+        "blName": "test"
+    }],
+    "toRead": {
+        "books": [{
+            "notes": [{
+                "page": 41,
+                "content": "haha"
+            }],
+            "bName": "Harry",
+            "%": 46,
+            "cPage": 46,
+            "lPage": 100
+        }],
+        "blName": "t"
+    },
+    "finish": {
+        "books": [],
+        "blName": "f"
+    },
+    "recom": {
+        "books": [],
+        "blName": "r"
+    }
+}
