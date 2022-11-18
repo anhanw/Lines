@@ -52,3 +52,13 @@ such as: pages and percentage.
 the quit option from the application menu. 
 - As a user, I want to be able to choose to load my book lists and excerpts when I start 
 *Lines*.
+
+# Instructions for Grader
+
+- You can generate the first required event related to adding BookList to mainMenu by enter the name
+of the book at the text field.
+- You can generate the second required event related to adding books to bookList Y by click the add
+button at the bottom down bookList menu.
+- You can locate my visual component by access any book in the list which user choose.
+- You can save the state of my application when closing the mainMenu.
+- You can reload the state of my application when opening the application.

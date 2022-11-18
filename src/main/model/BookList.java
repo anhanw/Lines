@@ -37,14 +37,26 @@ public class BookList implements Writable {
 
     // EFFECTS: view booklist in form of String
     public String booksToString() {
-        String result = ("\n" + name + ":");;
+        String result = ("<html><body>" + name + ":");;
         int i = 0;
         for (Book b:bookList) {
-            result = result + "\n\t" + "(" + i + ")" + b.getBookName();
+            result = result + "<br>    " + "(" + i + ")" + b.getBookName();
             i++;
         }
+        result = result + "<body></html>";
         return result;
     }
+
+//    // EFFECTS: view booklist in form of String
+//    public String booksToString() {
+//        String result = ("\n" + name + ":");;
+//        int i = 0;
+//        for (Book b:bookList) {
+//            result = result + "\n\t" + "(" + i + ")" + b.getBookName();
+//            i++;
+//        }
+//        return result;
+//    }
 
     //EFFECTS: get the list of book names in this list
     public List<String> getBookNames() {

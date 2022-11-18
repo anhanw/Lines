@@ -32,7 +32,7 @@ public class Notes {
         String note = "Notes:";
         int i = 0;
         for (Note n : notes) {
-            note = note + "\n\t(" + i + ") " + n.getContent() + " (P" + n.getPage() + ").";
+            note = note + "<br>    (" + i + ") " + n.getContent() + " (P" + n.getPage() + ").";
             i++;
         }
         if (note != "Notes:") {
@@ -41,6 +41,21 @@ public class Notes {
             return "No notes for now!";
         }
     }
+
+//    // EFFECTS: change notes in form of string
+//    public String notesToString() {
+//        String note = "Notes:";
+//        int i = 0;
+//        for (Note n : notes) {
+//            note = note + "\n\t(" + i + ") " + n.getContent() + " (P" + n.getPage() + ").";
+//            i++;
+//        }
+//        if (note != "Notes:") {
+//            return note;
+//        } else {
+//            return "No notes for now!";
+//        }
+//    }
 
     // EFFECTS: get note from given index
     public Note get(int index) {
