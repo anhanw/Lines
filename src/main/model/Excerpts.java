@@ -34,7 +34,7 @@ public class Excerpts implements Writable {
     public String excerptsToString() {
         String excerpt = name + ":";
         for (Excerpt e : excerpts) {
-            excerpt = excerpt + "<br>    From: " + e.getFrom() + "<br>        " + e.getContent();
+            excerpt = excerpt + "<br> <br>    From: " + e.getFrom() + "<br>        " + e.getContent();
         }
         if (excerpts.size() != 0) {
             return excerpt;

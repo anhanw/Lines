@@ -385,12 +385,15 @@ public class LinesAppGUI {
 
     // EFFECTS: return a panel displays Excerpts to user
     private JScrollPane displayExcerpts() {
-        String excerptInfo = "<html><body>" + sentPack.excerptsToString() + "<body></html>";
-        JLabel excerptPrint = new JLabel(excerptInfo);
-        //int excerptHeight = excerptPrint.getHeight();
-        //excerptPrint.setPreferredSize(new Dimension((WIDTH / 2) - 100, excerptHeight));
-        excerptPrint.setVerticalTextPosition(SwingConstants.TOP);
+        String excerptInfo = "<html><body>" + sentPack.excerptsToString() + "</body></html>";
+        JEditorPane excerptPrint = new JEditorPane();
+        excerptPrint.setContentType("text/html");
+        excerptPrint.setText(excerptInfo);
+        excerptPrint.setEditable(false);
+        excerptPrint.setMaximumSize(new Dimension(WIDTH / 2, HEIGHT / 2));
+
         JScrollPane excerptScroll = new JScrollPane(excerptPrint);
+        excerptScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         excerptScroll.setPreferredSize(new Dimension(WIDTH / 2, HEIGHT / 2));
         return excerptScroll;
     }
