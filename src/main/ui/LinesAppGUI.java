@@ -1,6 +1,7 @@
 package ui;
 
 import model.*;
+import model.Event;
 import persistence.JsonReaderBook;
 import persistence.JsonReaderExcerpt;
 import persistence.JsonWriterBook;
@@ -32,7 +33,6 @@ public class LinesAppGUI {
     private BookList activeBooks = null;
     private BookLists bookPack;
     private Excerpts sentPack;
-    private Scanner input;
     private JsonWriterBook jsonWriterBook;
     private JsonReaderBook jsonReaderBook;
     private JsonReaderExcerpt jsonReaderExcerpt;
@@ -101,8 +101,6 @@ public class LinesAppGUI {
     public void init() {
         bookPack = new BookLists("DoneBooks", "ToReadBooks", "RecommendBooks");
         sentPack = new Excerpts("Lines Collection");
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
     }
 
     // MODIFIES: this
@@ -156,6 +154,9 @@ public class LinesAppGUI {
             @Override
             public void windowClosing(WindowEvent e) {
                 checkOut();
+                for (Event next: EventLog.getInstance()) {
+                    System.out.println(next.toString() + "\n\n");
+                }
                 System.exit(0);
             }
         });

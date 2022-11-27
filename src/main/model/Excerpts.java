@@ -27,6 +27,7 @@ public class Excerpts implements Writable {
     // MODIFIES: this
     // EFFECTS: add a new excerpt to excerpts collection
     public void addExcerpt(Excerpt line) {
+        EventLog.getInstance().logEvent(new Event("Added excerpt."));
         excerpts.add(line);
     }
 

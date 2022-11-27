@@ -21,12 +21,14 @@ public class BookList implements Writable {
     // MODIFIES: this
     // EFFECTS: Add a book to bookList
     public void addBook(Book b) {
+        EventLog.getInstance().logEvent(new Event("Added book: " + b.getBookName()));
         bookList.add(b);
     }
 
     // MODIFIES: this
     // EFFECTS: remove the given book from bookList
     public void removeBook(Book b) {
+        EventLog.getInstance().logEvent(new Event("Removed book: " + b.getBookName()));
         bookList.remove(b);
     }
 

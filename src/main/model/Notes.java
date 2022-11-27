@@ -18,12 +18,14 @@ public class Notes {
     // MODIFIES: this
     // EFFECTS: add a new note to notes
     public void addNote(Note n) {
+        EventLog.getInstance().logEvent(new Event("Added note."));
         notes.add(n);
     }
 
     // MODIFIES: this
     // EFFECTS: remove a new excerpt to excerpts collection
     public void removeNote(Note n) {
+        EventLog.getInstance().logEvent(new Event("Removed note."));
         notes.remove(n);
     }
 
