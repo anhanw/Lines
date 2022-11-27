@@ -143,3 +143,7 @@ excerpt, and so on, I have to make the old frame un-visible and make a new frame
 the three steps listed above, I think I can rewrite the update method to make the whole application update more 
 smoothly.
 
+
+By refactoring my design as steps stated above, my design can have a clearer, more organized hierarchy. At the same
+time, the coupling of my code will reduce since I refactor similar classes to extend one abstract class. Hence, the 
+cohesion of my classes will be better since I focus more on one common topic in each class. 
