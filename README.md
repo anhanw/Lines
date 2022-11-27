@@ -62,3 +62,84 @@ button at the bottom down bookList menu.
 - You can locate my visual component by access any book in the list which user choose.
 - You can save the state of my application when closing the mainMenu.
 - You can reload the state of my application when opening the application.
+
+# Phase 4: Task 2
+
+Sun Nov 27 12:31:48 PST 2022
+Added book: Harry potter
+
+
+Sun Nov 27 12:31:48 PST 2022
+Added book: has
+
+
+Sun Nov 27 12:31:48 PST 2022
+Added book: 花见花开
+
+
+Sun Nov 27 12:31:48 PST 2022
+Added bookList: booklist
+
+
+Sun Nov 27 12:31:48 PST 2022
+Added excerpt.
+
+
+Sun Nov 27 12:31:48 PST 2022
+Added excerpt.
+
+
+Sun Nov 27 12:32:08 PST 2022
+Removed book: has
+
+
+Sun Nov 27 12:32:39 PST 2022
+Added book: Painful Learning
+
+
+Sun Nov 27 12:33:05 PST 2022
+Added note.
+
+
+Sun Nov 27 12:33:32 PST 2022
+Added note.
+
+
+Sun Nov 27 12:33:37 PST 2022
+Removed note.
+
+
+Sun Nov 27 12:33:50 PST 2022
+Added note.
+
+# Phase 4: Task 3
+
+1. I will refactor all Json classes. I will make two abstract JsonReader and JsonWriter classes to implement
+the common methods, such as read, write, open, close, and so on. Then, I can create new JsonReader classes for books 
+and excerpts that extend the abstract JsonReader class, and create other two new JsonWriter classes for books and 
+excerpts that extend the abstract JsonWriter class.
+
+
+2. I will refactor the GUI class into multiple classes. The reason is now I wrote all my code about GUI
+all in one class. It is very long and contains multiple of repeated codes. I can write a new class that 
+construct BookLists panel, a new class to construct Book panel, and one more new class to construct Excerpt 
+panel. By doing so, I will figure out those three new classes, let's call them BlPanel, BPanel, and ExPanel, 
+will have a lot of common methods, such as LayoutPanel, AddButtonPanel, and so on. Hence, I might consider 
+to have an abstract class called Component and let BlPanel, BPanel, and ExPanel extend Component to reduce 
+duplicated code. After doing so, I can associate those three classes to GUI by have them as fields and 
+instantiate them by methods (or in constructor). So we have a more clear structure of the codes.
+
+
+3. If I have more time, I will change the display of my BookLists and Books. Now I use button for each 
+bookList and a label located in a ScrollPanel to representing Books. If I have more time, I will  change them
+all to JList. Then I will add one more button called Access for BookLists, so that when I click each BookList, 
+I select them. Then I can push Access to access them - the detailed performance is similar to now: the BookList 
+will display in the bottom area. Similarly, I will also add a new Access button for Books. Then, when I choose 
+a book in the list, I can select it and access it. Then a new frame will pop up like current implementation.
+
+
+4. Finally, I will change the refresh method. Currently, every time I do something, such as add a book, note, 
+excerpt, and so on, I have to make the old frame un-visible and make a new frame to reflect the changes. After 
+the three steps listed above, I think I can rewrite the update method to make the whole application update more 
+smoothly.
+
