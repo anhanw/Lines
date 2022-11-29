@@ -1,5 +1,7 @@
 package persistence;
 
+import model.Event;
+import model.EventLog;
 import model.Excerpt;
 import model.Excerpts;
 import org.json.JSONArray;
@@ -28,6 +30,7 @@ public class JsonReaderExcerpt {
     public Excerpts read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+        EventLog.getInstance().logEvent(new Event("Excerpts Data loaded: "));
         return parseExcerpts(jsonObject);
     }
 

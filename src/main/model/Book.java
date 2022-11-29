@@ -15,13 +15,14 @@ public class Book implements Writable {
     public Book(String name) {
         bookName = name;
         notes = new Notes();
+        this.currentPage = 0;
     }
 
     // MODIFIES: this
     // EFFECTS: rename the book
     public void rename(String name) {
+        EventLog.getInstance().logEvent(new Event("Rename book to " + name));
         this.bookName = name;
-        this.currentPage = 0;
     }
 
     // REQUIRE: page >= 0
@@ -37,6 +38,7 @@ public class Book implements Writable {
     // EFFECTS: set up the current page and calculate the percentage of reading
     public void setCurrentStage(int page) {
         currentPage = page;
+        EventLog.getInstance().logEvent(new Event("Update stage: " + bookName));
         percentage = Math.round(((double)currentPage / (double)lastPage) * 100);
     }
 
@@ -44,6 +46,7 @@ public class Book implements Writable {
     // EFFECTS: set up the current stage of reading to 100
     public void doneBook() {
         this.currentPage = lastPage;
+        EventLog.getInstance().logEvent(new Event("Done: " + bookName));
         percentage = 100;
     }
 

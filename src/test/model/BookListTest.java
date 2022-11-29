@@ -79,7 +79,7 @@ public class BookListTest {
         tList.addBook(b1);
         tList.addBook(b2);
         String s = tList.booksToString();
-        assertEquals("\ntest:\n\t(0)QunShangHuiXiang\n\t(1)JiaYou!!!", s);
+        assertEquals("<html><body>test:<br>    (0)QunShangHuiXiang<br>    (1)JiaYou!!!<body></html>", s);
     }
 
     @Test

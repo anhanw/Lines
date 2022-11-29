@@ -21,6 +21,7 @@ public class Excerpts implements Writable {
     // MODIFIES: this
     // EFFECTS: Change the name of bookList
     public void renameExcerpts(String name) {
+        EventLog.getInstance().logEvent(new Event("Rename Excerpts to " + name));
         this.name = name;
     }
 

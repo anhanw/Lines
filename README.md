@@ -65,52 +65,64 @@ button at the bottom down bookList menu.
 
 # Phase 4: Task 2
 
-Sun Nov 27 12:31:48 PST 2022
+Mon Nov 28 17:17:04 PST 2022
+Books Data loaded:
+
+
+Mon Nov 28 17:17:04 PST 2022
 Added book: Harry potter
 
 
-Sun Nov 27 12:31:48 PST 2022
-Added book: has
+Mon Nov 28 17:17:04 PST 2022
+Added note.
 
 
-Sun Nov 27 12:31:48 PST 2022
-Added book: 花见花开
+Mon Nov 28 17:17:04 PST 2022
+Added note.
 
 
-Sun Nov 27 12:31:48 PST 2022
-Added bookList: booklist
-
-
-Sun Nov 27 12:31:48 PST 2022
-Added excerpt.
-
-
-Sun Nov 27 12:31:48 PST 2022
-Added excerpt.
-
-
-Sun Nov 27 12:32:08 PST 2022
-Removed book: has
-
-
-Sun Nov 27 12:32:39 PST 2022
+Mon Nov 28 17:17:04 PST 2022
 Added book: Painful Learning
 
 
-Sun Nov 27 12:33:05 PST 2022
-Added note.
+Mon Nov 28 17:17:04 PST 2022
+Added book: 花见花开
 
 
-Sun Nov 27 12:33:32 PST 2022
-Added note.
+Mon Nov 28 17:17:04 PST 2022
+Added bookList: booklist
 
 
-Sun Nov 27 12:33:37 PST 2022
-Removed note.
+Mon Nov 28 17:17:04 PST 2022
+Excerpts Data loaded:
 
 
-Sun Nov 27 12:33:50 PST 2022
-Added note.
+Mon Nov 28 17:17:04 PST 2022
+Added excerpt.
+
+
+Mon Nov 28 17:17:04 PST 2022
+Added excerpt.
+
+
+Mon Nov 28 17:17:31 PST 2022
+Added bookList: Boy
+
+
+Mon Nov 28 17:17:48 PST 2022
+Added book: math
+
+
+Mon Nov 28 17:19:10 PST 2022
+Removed book: math
+
+
+Mon Nov 28 17:19:16 PST 2022
+Books Data saved.
+
+
+Mon Nov 28 17:19:16 PST 2022
+Excerpts Data saved.
 
 # Phase 4: Task 3
 

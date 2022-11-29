@@ -1,6 +1,8 @@
 package persistence;
 
 import model.BookLists;
+import model.Event;
+import model.EventLog;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -30,6 +32,8 @@ public class JsonWriterBook {
     // EFFECTS: writes JSON representation of bookLists to file
     public void write(BookLists bls) {
         JSONObject json = bls.toJson();
+
+        EventLog.getInstance().logEvent(new Event("Books Data saved."));
         saveToFile(json.toString(TAB));
     }
 

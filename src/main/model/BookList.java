@@ -34,6 +34,7 @@ public class BookList implements Writable {
 
     // EFFECTS: check whether the given book is in the bookList
     public boolean containsBook(Book b) {
+        EventLog.getInstance().logEvent(new Event("Check book: " + b.getBookName()));
         return bookList.contains(b);
     }
 

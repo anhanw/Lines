@@ -6,10 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-import model.Book;
-import model.BookList;
-import model.BookLists;
-import model.Note;
+import model.*;
 import org.json.*;
 
 // Methods were taken from JsonReader in:
@@ -29,6 +26,7 @@ public class JsonReaderBook {
     public BookLists read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+        EventLog.getInstance().logEvent(new Event("Books Data loaded: "));
         return parseBookLists(jsonObject);
     }
 

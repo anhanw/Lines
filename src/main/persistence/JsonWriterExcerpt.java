@@ -1,5 +1,7 @@
 package persistence;
 
+import model.Event;
+import model.EventLog;
 import model.Excerpts;
 import org.json.JSONObject;
 
@@ -30,6 +32,8 @@ public class JsonWriterExcerpt {
     // EFFECTS: writes JSON representation of excerpts to file
     public void write(Excerpts lines) {
         JSONObject json = lines.toJson();
+
+        EventLog.getInstance().logEvent(new Event("Excerpts Data saved."));
         saveToFile(json.toString(TAB));
     }
 

@@ -54,14 +54,14 @@ public class ExcerptsTest {
 
     @Test
     void testEmptyExcerptsToString() {
-        assertEquals("Taolu:\nNo excerpts for now!", tLines.excerptsToString());
+        assertEquals("Taolu:<br>No excerpts for now!", tLines.excerptsToString());
     }
 
     @Test
     void testExcerptsToString() {
         tLines.addExcerpt(l1);
         tLines.addExcerpt(l2);
-        String s = "Taolu:\nFrom: Lam\n\tThis is life.\nFrom: KOB\n\tWhat's up!";
+        String s = "Taolu:<br> <br>    From: Lam<br>        This is life.<br> <br>    From: KOB<br>        What's up!";
         assertEquals(s,tLines.excerptsToString());
     }
 }
